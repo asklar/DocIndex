@@ -6,5 +6,5 @@
         xmlns:local="clr-namespace:DebuggerHelp"
         mc:Ignorable="d"
         Title="WinDbg AI-assisted help" Height="450" Width="800">
-    <local:HelpPage IndexPath="F:\\windows-driver-docs\\windows-driver-docs-pr\\debugger\\index.sptag"/>
+    <local:HelpPage IndexPath="Assets\\index.sptag"/>
 </Window>
