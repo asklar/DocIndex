@@ -118,7 +118,7 @@ async void Repl(string folder)
     Console.ReadKey();
 }
 
-static async Task SearchFolderRepl(string folder, string localFolder, OpenAIClient client)
+async Task SearchFolderRepl(string folder, string localFolder, OpenAIClient client)
     {
         Console.ReadLine();
         var savedIdx = Path.Combine(folder, "index.sptag");
@@ -222,9 +222,9 @@ static byte[] GetEmbeddingBytes(IReadOnlyList<float> embedding)
     return embedding.SelectMany(e => BitConverter.GetBytes(e)).ToArray();
 }
 
-static async Task<BasicResult[]> Search(OpenAIClient client, AnnIndex index, string query)
+async Task<BasicResult[]> Search(OpenAIClient client, AnnIndex index, string query)
 {
-    var queryEmbedding = (await client.GetEmbeddingsAsync("Text-Embedding-ADA-002", new EmbeddingsOptions(query)));
+    var queryEmbedding = (await client.GetEmbeddingsAsync(embeddingDeploymentName, new EmbeddingsOptions(query)));
     var queryBytes = GetEmbeddingBytes(queryEmbedding.Value.Data[0].Embedding);
     return index.SearchWithMetaData(queryBytes, 15);
 }
