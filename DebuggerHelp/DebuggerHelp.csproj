@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.AI.OpenAI" Version="1.0.0-beta.5" />
+    <PackageReference Include="Azure.Core" Version="1.30.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1724-prerelease" />
+    <PackageReference Include="MSSPTAG.Managed.Library" Version="1.6.2" />
+  </ItemGroup>
+
+</Project>
