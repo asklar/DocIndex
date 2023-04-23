@@ -1,0 +1,42 @@
+﻿<Page x:Class="DebuggerHelp.HelpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DebuggerHelp"
+      xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="HelpPage"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="query" PreviewKeyDown="query_PreviewKeyDown" Padding="1"/>
+        <Grid Grid.Row="1" Margin="0 1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="results" ItemsSource="{Binding SearchResults}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate DataType="local:SearchResult">
+                        <TextBlock Text="{Binding Title}" PreviewMouseDown="TextBlock_PreviewMouseDown" TextTrimming="WordEllipsis" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <GridSplitter Grid.Column="1" Width="3" Background="DarkGray" HorizontalAlignment="Stretch"/>
+            <wv2:WebView2 Grid.Column="2" x:Name="webview" CoreWebView2InitializationCompleted="webview_CoreWebView2InitializationCompleted"/>
+        </Grid>
+    </Grid>
+
+</Page>
